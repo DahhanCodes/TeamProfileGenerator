@@ -11,7 +11,7 @@ const managerHtml = function (manager) {
             <div class="card-body">
                 <p style="border: 1px solid blue; border-radius: 3px; padding: 5px;" class="id">ID: ${manager.id}</p>
                 <p style="border: 1px solid blue; border-radius: 3px; padding: 5px;" class="email">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
-                <p style="border: 1px solid blue; border-radius: 3px; padding: 5px;" class="office">Office Number: ${manager.officeNumber}</p>
+                <p style="border: 1px solid blue; border-radius: 3px; padding: 5px;" class="office">Office Number: ${manager.office}</p>
             </div>
         </div>
     </div>
@@ -58,10 +58,12 @@ const internHtml = function (intern) {
 
 // a function to carry an array of html output and push it to the page 
 generateHTML = (data) => {
-
+    console.log("here")
+    console.log(data)
     // html output array
     pageArray = []; 
-
+    
+   
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
         const role = employee.getRole(); 
@@ -81,9 +83,9 @@ generateHTML = (data) => {
 
             pageArray.push(internCard);
         }
-        
+        console.log(pageArray)
     }
-
+    console.log(pageArray)
     //Stringifying the array 
     var employeeCards = pageArray.join('')
 

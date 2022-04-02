@@ -102,6 +102,8 @@ teamMembers.forEach(element => {
     
             teamMembers.push(manager); 
             console.log(manager); 
+            console.log(teamMembers)
+            return teamMembers;
         })
     };
    
@@ -111,30 +113,29 @@ teamMembers.forEach(element => {
                     type:'confirm',
                     message: 'Would you like to add team members?',
                     name:'addTeamMate',
-                    validate: addteamInput =>{
-                        if (addteamInput){
-                            confirmAdd = true;
-                        }else{
-                            confirmAdd = false;
-                        }
-                    }
+                    
                 }
-            )};
-
+            )
+                .then( AddTeamMateInput => {
+                    let {addTeamMate}= AddTeamMateInput
+                    console.log(AddTeamMateInput)
+                    if (addTeamMate){
+                        confirmAdd = true;
+                    }else{
+                        confirmAdd =false;
+                    }
+                    console.log(confirmAdd)
+                    return confirmAdd;
+                })
+        };
+    
     
     
 
 
         function employeePrompt (){
             return inquirer.prompt([
-                {
-                    type: 'list',
-                    message: 'Would you like to add team members?',
-                    name:'addTeamMate',
-                    choices: ["Yes", "No"],
-                    
-                },
-
+               
                 {
                     type: 'list',
                     message: 'Is this an engineer or an intern?',
@@ -228,7 +229,7 @@ teamMembers.forEach(element => {
                     // data for employee types 
             
                     let { employeeName, employeeID, employeeEmail, jobRank, github, school, addAnother } = employeeData; 
-                    let employee; 
+                    var employee; 
             
                     if (jobRank === "Engineer") {
                         employee = new Engineer (employeeName, employeeID, employeeEmail, github);
@@ -255,7 +256,7 @@ teamMembers.forEach(element => {
             }
             
             const writeFile = data => {
-                fs.writeFile('../dist/index.html', data, err => {
+                fs.writeFile('dist/index.html', data, err => {
                     // if there is an error 
                     if (err) {
                         console.log(err);
@@ -269,14 +270,15 @@ teamMembers.forEach(element => {
 
             managerPrompt()
             .then(confirmEmployeeAdd)
-            .then( confirmAdd =>{
-                if (confirmAdd){
-                    employeePrompt()
+            .then( confirmed =>{
+                confirmed = confirmAdd
+                if (confirmAdd === true){
+                    return employeePrompt()
                 }
             })
-          
-            .then(teamMembers => {
-              return generateHTML(teamMembers);
+            .then(Members => {
+                Members = teamMembers;
+              return generateHTML(Members);
             })
             .then(pageHTML => {
               return writeFile(pageHTML);
