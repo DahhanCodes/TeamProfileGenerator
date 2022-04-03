@@ -159,7 +159,7 @@ teamMembers.forEach(element => {
                   }},
                 {
                   type: 'input',
-                  message: 'Please input the employees email',
+                  message: 'Please input the employees email: ',
                   name: 'employeeEmail',
                   validate: employeeEmailInput => {
                     valid = validInput.test(employeeEmailInput)
@@ -176,7 +176,7 @@ teamMembers.forEach(element => {
                 {
                     type: 'input',
                     name: 'employeeID',
-                    message: "Please enter the employee's ID.",
+                    message: "Please enter the employee's ID: ",
                     validate: nameInput => {
                         if  (isNaN(nameInput)) {
                             console.log ("Please enter the employee's ID!")
@@ -190,7 +190,7 @@ teamMembers.forEach(element => {
                 {
                     type: 'input',
                     name: 'github',
-                    message: "Please enter the engineer's github username.",
+                    message: "Please enter the engineer's github username: ",
                     when: (input) => input.jobRank === "Engineer",
                     validate: nameInput => {
                         if (nameInput ) {
@@ -204,7 +204,7 @@ teamMembers.forEach(element => {
                 {
                     type: 'input',
                     name: 'school',
-                    message: "Please enter the intern's school",
+                    message: "Please enter the intern's school: ",
                     when: (input) => input.jobRank === "Intern",
                     validate: nameInput => {
                         if (nameInput) {
