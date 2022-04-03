@@ -45,7 +45,6 @@
   }) into your package.json__
   _please follow steps in the video:_
   - https://drive.google.com/file/d/1_gH7UeYg6V_B7Qdyz8-OM-FMnkqyqWjp/view
-  (#)
 
   #### Questions:
  - Email: moustafaeldahhan@gmail.com
