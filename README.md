@@ -39,8 +39,8 @@
 
   ### *Tests:*
   _Must install jest_<br/>
-  __npm i jest__
-  _please follow steps in the video_
+  __npm i jest__<br/>
+  _please follow steps in the video:_
   - https://drive.google.com/file/d/1_gH7UeYg6V_B7Qdyz8-OM-FMnkqyqWjp/view
   (#)
 
